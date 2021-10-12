@@ -1,2 +1,2 @@
 # Cyphers
-Let's build some Cyphers in whatever language you want!
+Let's build some Cyphers in C#
