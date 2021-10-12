@@ -12,7 +12,7 @@ Be sure to create a new directory for each cipher that is added. I am hoping to 
     Fork this repo
     Code up a Cipher
     Add documentation about the cipher
-    Write a couple tests
+    Write a couple tests (Test encoding and decoding messages)
     Profit
 
 And that's it! You're change should not break the existing code and should pass the tests.
