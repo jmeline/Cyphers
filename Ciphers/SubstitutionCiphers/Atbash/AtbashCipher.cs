@@ -33,7 +33,9 @@ namespace Ciphers.SubstitutionCiphers.Atbash
 
         private string IterateAndConvertText(string text) => 
             text.Aggregate("", (current, character) => 
-                    current + Convert(character));
+                current + (!char.IsLetterOrDigit(character) 
+                    ? character 
+                    : Convert(character)));
         
         public string Encode(string plainText) => IterateAndConvertText(plainText);
 

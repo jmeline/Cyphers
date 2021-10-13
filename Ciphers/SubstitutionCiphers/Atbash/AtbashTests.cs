@@ -16,6 +16,8 @@ namespace Ciphers.SubstitutionCiphers.Atbash
         public void VerifyEncodingWorks()
         {
             _atBashCipher.Encode("AbC").ShouldBe("ZyX");
+            _atBashCipher.Encode("DeFeNd ThE CaStLe!").ShouldBe("WvUvMw GsV XzHgOv!");
+            _atBashCipher.Decode("WvUvMw GsV XzHgOv!").ShouldBe("DeFeNd ThE CaStLe!");
         }
         
         [Fact]
