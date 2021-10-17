@@ -26,4 +26,8 @@
       <Folder Include="SubstitutionCiphers\Atbash" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ciphers\Ciphers.csproj" />
+    </ItemGroup>
+
 </Project>
