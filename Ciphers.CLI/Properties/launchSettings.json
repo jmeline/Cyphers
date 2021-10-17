@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ciphers.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "morse-code"
+    }
+  }
+}
