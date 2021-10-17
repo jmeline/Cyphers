@@ -1,5 +1,11 @@
+# Rider
+.idea/
+
 # Visual Studio
 .vs/
 bin/
 obj/
 Properties/
+
+# Visual Studio Code
+.vscode/
