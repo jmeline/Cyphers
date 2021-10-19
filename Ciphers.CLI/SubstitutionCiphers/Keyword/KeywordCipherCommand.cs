@@ -10,7 +10,7 @@ namespace Ciphers.CLI.SubstitutionCiphers.Keyword
         private readonly KeywordCipher cipher;
 
         public KeywordCipherCommand()
-            : base("keyword", "Keyword sipher.")
+            : base("keyword", "Keyword cipher.")
         {
             cipher = new KeywordCipher();
 
