@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+import os
+
+os.chdir('../../..')
+os.chdir('Ciphers/SubstitutionCiphers/Polybius')
 
 import polybius
 import numpy as np
