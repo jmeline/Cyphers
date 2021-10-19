@@ -226,3 +226,6 @@ project.lock.json
 
 # Python generated files
 __pycache__
+
+# Visual Studio
+Properties/
