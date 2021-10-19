@@ -71,4 +71,3 @@ class PolybiusCipher:
                 decoded_message = decoded_message + " "
 
         return decoded_message
-
