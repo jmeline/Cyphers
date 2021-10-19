@@ -21,5 +21,4 @@ namespace Ciphers.SubstitutionCiphers.OneTimePad
             _oneTimePad.Decode(encodedText).ShouldBe(message);
         }
     }
-
 }
