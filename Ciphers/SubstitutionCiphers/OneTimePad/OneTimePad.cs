@@ -13,7 +13,7 @@ namespace Ciphers.SubstitutionCiphers.OneTimePad
     /// These letters are combined with the plaintext message to produce the ciphertext.
     /// To decipher the message, a person must have a copy of the one-time pad to reverse the process.
     /// A one-time pad should be used only once (hence the name) and then destroyed.
-    /// This is the first and only encryption algorithm that has been proven to be unbreakable
+    /// This is the first and only encryption algorithm that has been proven to be unbreakable.
     /// </summary>
     public class OneTimePad : ICipher
     {
