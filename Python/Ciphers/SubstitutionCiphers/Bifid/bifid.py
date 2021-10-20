@@ -25,15 +25,16 @@ class BifidCipher():
         polybius square
         """
         index1, index2 = np.where(self.SQUARE == letter)
-        indexes = np.concatenate([index1, index2])
+        indexes = np.concatenate([index1 + 1, index2 + 1])
         return indexes
-
+    
+    
     def numbers_to_letter(self, index1: int, index2: int) -> str:
         """
         Return the letter corresponding to the position [index1, index2] in
         the polybius square
         """
-        letter = self.SQUARE[index1, index2]
+        letter = self.SQUARE[index1 - 1, index2 - 1]
         return letter
         
     def encode(self, message: str) -> str:
@@ -42,6 +43,7 @@ class BifidCipher():
         """
         message = message.lower()
         message = message.replace(' ', '')
+        message = message.replace("j", "i")
         
         first_step = np.empty((2, len(message)))
         for letter_index in range(len(message)):

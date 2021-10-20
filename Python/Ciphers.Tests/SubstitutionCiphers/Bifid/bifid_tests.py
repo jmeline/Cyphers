@@ -4,9 +4,9 @@ import os
 os.chdir('../../..')
 os.chdir('Ciphers/SubstitutionCiphers/Bifid')
 
-import Bifid
+import bifid
 
-Cipher = Bifid.BifidCipher()
+Cipher = bifid.BifidCipher()
 
 assert (Cipher.encode('testmessage') == 'qtltbdxrxlk')
 assert (Cipher.encode('test message') == 'qtltbdxrxlk')
