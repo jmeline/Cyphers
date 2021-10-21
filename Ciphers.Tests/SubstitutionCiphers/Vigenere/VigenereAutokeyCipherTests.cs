@@ -52,22 +52,5 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
             encoded.ShouldBe("mlw jemag pirpu jer rwwqj crrw hen fmoq rjk");
             decoded.ShouldBe(message);
         }
-
-        [Fact]
-        public void VerifyWhenKeywordIsNotEmpty_And_MixedMessageCasing()
-        {
-            // Arrange
-            var message = "abcABC";
-            _cipher.SetKeyword("b");
-
-            // Act
-            var encoded = _cipher.Encode(message);
-            var decoded = _cipher.Decode(encoded);
-
-            // Asset
-            encoded.ShouldNotBe(decoded);
-            encoded.ShouldBe("bacBAC");
-            decoded.ShouldBe(message);
-        }
     }
 }
