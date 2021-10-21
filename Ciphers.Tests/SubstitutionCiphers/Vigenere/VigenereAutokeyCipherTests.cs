@@ -27,13 +27,7 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
         }
 
         /// <re>
-        /// Verifies that
-        /// - Input letters are replaced multiple times by the keyword
-        ///   In this case 'a' is replaced by 'b' multiple times
-        /// - Keyword letters are given a new alphabet letter multiple times
-        ///   In this case 'b' is given the letter 'a'
-        /// - Any other input letter is still functioning
-        ///   In this case 'c' stil has 'c'
+        /// Verifies that the alghoritm correctly encodes and decodes back a given text
         /// </summary>
         [Fact]
         public void VerifyWhenKeywordIsNotEmpty()
