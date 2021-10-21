@@ -11,6 +11,7 @@ namespace Ciphers.CLI
             services.AddSingleton<Command, SubstitutionCiphers.Atbash.AtbashCipherCommand>();
             services.AddSingleton<Command, SubstitutionCiphers.Keyword.KeywordCipherCommand>();
             services.AddSingleton<Command, SubstitutionCiphers.ROT13.RotateBy13PlacesCipherCommand>();
+            services.AddSingleton<Command, RouteCipher.SpiralRouteCipherCommand>();
 
             return services;
         }
