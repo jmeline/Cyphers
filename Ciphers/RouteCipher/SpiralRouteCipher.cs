@@ -57,15 +57,16 @@ namespace Ciphers.RouteCipher
             var spiral = new Spiral(_rows, _columns);
             int row, col;
 
-            for (var i = 0; ; i = row + (col * _rows))
+            var i = 0;
+            do
             {
                 cipherText += toEncode[i];
 
-                if (cipherText.Length == toEncode.Length)
-                    break;
-
                 (row, col) = spiral.Navigate();
+
+                i = row + (col * _rows);
             }
+            while (cipherText.Length < toEncode.Length);
 
             return cipherText;
         }

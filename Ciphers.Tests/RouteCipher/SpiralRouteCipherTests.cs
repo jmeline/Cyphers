@@ -5,15 +5,13 @@ namespace Ciphers.RouteCipher
 {
     public class SpiralRouteCipherTests
     {
-        private const string ALL_LETTERS = "THISISASECRETMESSAGET"; // final T is for padding
-        private const int ROWS = 3;
-        private const int COLS = 7;
+        private const string ALL_LETTERS = "THISISASECRETMESSAGET"; // final T is for padding, 21 chars
 
         private readonly SpiralRouteCipher _cipher;
 
         public SpiralRouteCipherTests()
         {
-            _cipher = new SpiralRouteCipher(ROWS, COLS);
+            _cipher = new SpiralRouteCipher();
         }
 
         [Fact]
@@ -21,6 +19,7 @@ namespace Ciphers.RouteCipher
         {
             // Arrange
             var message = ALL_LETTERS;
+            _cipher.SetSpiralDimenstions(3, 7);
 
             // Act
             var encoded = _cipher.Encode(message);
