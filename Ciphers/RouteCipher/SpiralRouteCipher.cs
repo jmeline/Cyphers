@@ -81,7 +81,7 @@ namespace Ciphers.RouteCipher
                 Ovest
             }
 
-            private Direction _direction;
+            private Direction _direction; // default Nord
             private int row;
             private int minRow;
             private int maxRow;
@@ -90,9 +90,8 @@ namespace Ciphers.RouteCipher
             private int minCol;
             private int maxCol;
 
-            public Spiral(int rows, int columns, Direction startingDirection = Direction.Nord)
+            public Spiral(int rows, int columns)
             {
-                _direction = startingDirection;
                 maxRow = rows - 1;
                 maxCol = columns - 1;
             }
