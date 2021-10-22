@@ -29,7 +29,7 @@ namespace Ciphers.CLI.RouteCipher
 
         private void HandleCommand(string decode, string encode, int rows, int columns)
         {
-            cipher.SetSpiralDimenstions(rows, columns);
+            cipher.SetSpiralSize(rows, columns);
 
             if (!string.IsNullOrEmpty(decode))
                 Console.Write(cipher.Decode(decode));

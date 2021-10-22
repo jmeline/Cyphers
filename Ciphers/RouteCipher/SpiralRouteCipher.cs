@@ -10,9 +10,9 @@ namespace Ciphers.RouteCipher
         public SpiralRouteCipher() { }
 
         public SpiralRouteCipher(int rows, int columns) =>
-            SetSpiralDimenstions(rows, columns);
+            SetSpiralSize(rows, columns);
 
-        public void SetSpiralDimenstions(int rows, int columns)
+        public void SetSpiralSize(int rows, int columns)
         {
             _rows = rows;
             _columns = columns;

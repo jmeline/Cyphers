@@ -1,12 +1,11 @@
-﻿using Shouldly;
+﻿using System;
+using Shouldly;
 using Xunit;
 
 namespace Ciphers.RouteCipher
 {
     public class SpiralRouteCipherTests
     {
-        private const string ALL_LETTERS = "THISISASECRETMESSAGET"; // final T is for padding, 21 chars
-
         private readonly SpiralRouteCipher _cipher;
 
         public SpiralRouteCipherTests()
@@ -14,21 +13,58 @@ namespace Ciphers.RouteCipher
             _cipher = new SpiralRouteCipher();
         }
 
+        /// <summary>
+        /// Verifies that the cipher works in both encoding and decoding, cfr. https://www.braingle.com/brainteasers/codes/route.php
+        /// </summary>
         [Fact]
         public void VerifyEncodeDecode()
         {
             // Arrange
-            var message = ALL_LETTERS;
-            _cipher.SetSpiralDimenstions(3, 7);
+            const int ROWS = 3;
+            const int COLS = 7;
+            const string message = "THISISASECRETMESSAGE";
+            _cipher.SetSpiralSize(ROWS, COLS);
 
             // Act
             var encoded = _cipher.Encode(message);
             var decoded = _cipher.Decode(encoded);
 
-            // Asset
+            // Assert
             encoded.ShouldNotBe(decoded);
-            encoded.ShouldStartWith("TSACTSGETAEEESIHISRMS");
-            decoded.ShouldBe(message);
+            encoded.ShouldBe("TSACTSGETAEEESIHISRMS");
+            decoded.ShouldBe($"{message}{message[..(ROWS * COLS - message.Length)]}"); // pad the string to match the desired length
+        }
+
+        /// <summary>
+        /// Verify that the cipher pads the text repeating it to reach the spiral length (rows + columns)
+        /// </summary>
+        [Fact]
+        public void VerifyPadText()
+        {
+            // Arrange
+            const string message = "SECRET TEXT";
+            _cipher.SetSpiralSize(4, 4);
+
+            // Act
+            var encoded = _cipher.Encode(message);
+            var decoded = _cipher.Decode(encoded);
+
+            // Assert
+            decoded.ShouldBe("SECRETTEXTSECRET");
+        }
+
+        /// <summary>
+        /// Verifies that the cipher returns error if the encoded text doesn't match the spiral size
+        /// </summary>
+        [Fact]
+        public void VerifyCheckOnEncodedText()
+        {
+            // Arrange
+            const string encodedMessage = "THIS TEXT IS TOO LONG";
+            _cipher.SetSpiralSize(4, 4);
+
+            // Assert
+            Should.Throw(() => _cipher.Decode(encodedMessage), typeof(ArgumentException));
         }
     }
 }
