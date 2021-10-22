@@ -2,7 +2,7 @@
 using Shouldly;
 using Xunit;
 
-namespace Ciphers.RouteCipher
+namespace Ciphers.TranspositionCiphers
 {
     public class SpiralRouteCipherTests
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ciphers.RouteCipher
+namespace Ciphers.TranspositionCiphers
 {
     public class SpiralRouteCipher : ICipher
     {

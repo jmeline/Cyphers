@@ -1,9 +1,9 @@
 ﻿using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using Ciphers.RouteCipher;
+using Ciphers.TranspositionCiphers;
 
-namespace Ciphers.CLI.RouteCipher
+namespace Ciphers.CLI.TranspositionCiphers
 {
     public sealed class SpiralRouteCipherCommand : CipherCommand
     {
