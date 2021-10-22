@@ -3,7 +3,7 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using Ciphers.SubstitutionCiphers.Vigenere;
 
-namespace Ciphers.CLI.SubstitutionCiphers.Keyword
+namespace Ciphers.CLI.SubstitutionCiphers.Vigenere
 {
     public sealed class VigenereAutokeyCipherCommand : CipherCommand
     {
