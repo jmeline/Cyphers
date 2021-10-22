@@ -16,7 +16,10 @@ namespace Ciphers.TranspositionCiphers
         public string Decode(string cipherText)
         {
             var rows = _keyword.Length;
-            var columns = (int)Math.Ceiling((float)cipherText.Length / rows);
+            var columns = cipherText.Length / rows;
+
+            if (cipherText.Length != columns * rows)
+                throw new ArgumentException("Text length is not a multiple of configured rails", nameof(cipherText));
 
             var plainText = string.Empty;
             var orderedKeywordIndexes = _keyword.OrderBy(x => x).Select((kChar, idx) => (kChar, idx)).ToDictionary(kv => kv.kChar, kv => kv.idx); // determine keyword characters indexes in alphabetical order
@@ -46,7 +49,12 @@ namespace Ciphers.TranspositionCiphers
         public string GetKeyword() =>
             _keyword;
 
-        public void SetKeyword(string keyword) =>
+        public void SetKeyword(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                throw new ArgumentException("Keyword must be a not empty, not null string", nameof(keyword));
+
             _keyword = new string(keyword.Distinct().ToArray());
+        }
     }
 }

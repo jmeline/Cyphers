@@ -1,4 +1,5 @@
-﻿using Ciphers.SubstitutionCiphers.Keyword;
+﻿using System;
+using Ciphers.SubstitutionCiphers.Keyword;
 using Ciphers.TranspositionCiphers;
 using Shouldly;
 using Xunit;
@@ -24,6 +25,41 @@ namespace Ciphers.Tests.TranspositionCipher
         {
             _cipher.SetKeyword("aA bBb ");
             _cipher.GetKeyword().ShouldBe("aA bB");
+        }
+
+        /// <summary>
+        /// Verifies that cipher checks the keyword is not null and not empty
+        /// </summary>
+        [Fact]
+        public void VerifyCheckValidKeyword()
+        {
+            // Assert
+            Should.Throw(() =>
+            {
+                _cipher.SetKeyword(string.Empty);
+            }, typeof(ArgumentException));
+
+            Should.Throw(() =>
+            {
+                _cipher.SetKeyword(null);
+            }, typeof(ArgumentException));
+        }
+
+        /// <summary>
+        /// Verifies that cipher returns error if encoded text is not a multiple of the rails number
+        /// </summary>
+        [Fact]
+        public void VerifyWrongDecodedMessage()
+        {
+            // Arrange
+            const string encoded = "MESSAGE OF 25 CHARACTERS!";
+
+            // Assert
+            Should.Throw(() =>
+            {
+                _cipher.SetKeyword("key");
+                _cipher.Decode(encoded);
+            }, typeof(ArgumentException));
         }
 
         /// <re>
