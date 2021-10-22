@@ -1,8 +1,9 @@
-﻿using Ciphers.TranspositionCiphers;
+﻿using Ciphers.SubstitutionCiphers.Keyword;
+using Ciphers.TranspositionCiphers;
 using Shouldly;
 using Xunit;
 
-namespace Ciphers.SubstitutionCiphers.Keyword
+namespace Ciphers.Tests.TranspositionCipher
 {
     public class ColumnarTranspositionCipherTests
     {

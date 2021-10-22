@@ -18,14 +18,12 @@ namespace Ciphers.TranspositionCiphers
             var rows = _keyword.Length;
             var columns = (int)Math.Ceiling((float)cipherText.Length / rows);
 
-            var matrix = TextToMatrix(cipherText, rows, columns);
-
             var plainText = string.Empty;
             var orderedKeywordIndexes = _keyword.OrderBy(x => x).Select((kChar, idx) => (kChar, idx)).ToDictionary(kv => kv.kChar, kv => kv.idx); // determine keyword characters indexes in alphabetical order
 
-            for (var col = 0; col < matrix.GetLength(1); col++)
+            for (var col = 0; col < columns; col++)
                 foreach (var k in _keyword)
-                    plainText += matrix[orderedKeywordIndexes[k], col];
+                    plainText += cipherText[orderedKeywordIndexes[k] + col * rows];
 
             return plainText;
         }
@@ -35,14 +33,12 @@ namespace Ciphers.TranspositionCiphers
             var columns = _keyword.Length;
             var rows = (int)Math.Ceiling((float)plainText.Length / columns);
 
-            var matrix = TextToMatrix(plainText, rows, columns);
-
             var cipherText = string.Empty;
             var colIdxs = _keyword.Select((kChar, idx) => (kChar, idx)).OrderBy(x => x.kChar).Select(x => x.idx).ToArray(); // create char/index couples, order alphabetically and select indexes
 
             foreach (var col in colIdxs)
-                for (var row = 0; row < matrix.GetLength(0); row++)
-                    cipherText += matrix[row, col];
+                for (var row = 0; row < rows; row++)
+                    cipherText += plainText[(col + row * columns) % plainText.Length];
 
             return cipherText;
         }
@@ -52,18 +48,5 @@ namespace Ciphers.TranspositionCiphers
 
         public void SetKeyword(string keyword) =>
             _keyword = new string(keyword.Distinct().ToArray());
-
-        private static char[,] TextToMatrix(string text, int rows, int columns)
-        {
-            var matrix = new char[rows, columns];
-
-            var cipherIdx = 0;
-
-            for (var r = 0; r < rows; r++)
-                for (var c = 0; c < columns; c++)
-                    matrix[r, c] = text[cipherIdx++ % text.Length];
-
-            return matrix;
-        }
     }
 }
