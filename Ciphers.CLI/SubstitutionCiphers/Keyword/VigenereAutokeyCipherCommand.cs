@@ -1,9 +1,9 @@
 ﻿using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using Ciphers.SubstitutionCiphers.Vigenere;
+using Ciphers.SubstitutionCiphers.Keyword;
 
-namespace Ciphers.CLI.SubstitutionCiphers.Vigenere
+namespace Ciphers.CLI.SubstitutionCiphers.Keyword
 {
     public sealed class VigenereAutokeyCipherCommand : CipherCommand
     {

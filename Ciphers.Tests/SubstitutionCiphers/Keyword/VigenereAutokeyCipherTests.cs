@@ -1,8 +1,7 @@
-﻿using Ciphers.SubstitutionCiphers.Keyword;
-using Shouldly;
+﻿using Shouldly;
 using Xunit;
 
-namespace Ciphers.SubstitutionCiphers.Vigenere
+namespace Ciphers.SubstitutionCiphers.Keyword
 {
     public class VigenereAutokeyCipherTests
     {
@@ -30,7 +29,7 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
         /// Verifies that the alghoritm correctly encodes and decodes back a given text
         /// </summary>
         [Fact]
-        public void VerifyWhenKeywordIsNotEmpty()
+        public virtual void VerifyWhenKeywordIsNotEmpty()
         {
             // Arrange
             var message = ALL_LETTERS;
@@ -42,7 +41,7 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
 
             // Asset
             encoded.ShouldNotBe(decoded);
-            // cfr. https://www.boxentriq.com/code-breaking/vigenere-cipher, plain = "the quick brown fox jumps over the lazy dog", key = "testkeyword"
+            // cfr. https://www.boxentriq.com/code-breaking/vigenere-cipher, plain = "the quick brown fox jumps over the lazy dog", key = "testkeyword, AutoKey variant"
             encoded.ShouldBe("mlw jemag pirpu jer rwwqj crrw hen fmoq rjk");
             decoded.ShouldBe(message);
         }

@@ -1,6 +1,4 @@
-﻿using Ciphers.SubstitutionCiphers.Keyword;
-
-namespace Ciphers.SubstitutionCiphers.Vigenere
+﻿namespace Ciphers.SubstitutionCiphers.Keyword
 {
     public class VigenereAutokeyCipher : IKeywordCipher
     {
@@ -73,8 +71,8 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
         {
             foreach (var c in keyword)
             {
-                var lowerC = char.ToLower(c);
-                if (char.IsLower(lowerC))
+                var lowerC = char.ToLower(c); // keyword needs to be normalized in lowercase
+                if (char.IsLower(lowerC)) // if it's not lower after .ToLower(), it's not a letter, don't encode
                     _keyword += lowerC;
             }
         }
@@ -84,16 +82,24 @@ namespace Ciphers.SubstitutionCiphers.Vigenere
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        private static int NormalizeChar(char c) => c - LowercaseAlphabetStart;
+        private static int NormalizeChar(char c) =>
+            c - LowercaseAlphabetStart;
 
         /// <summary>
         /// Denormalizes an <see cref="int"/>, converting it to the corresponding character assuming it's an alphabet index (0-indexed)
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        private static char DenormalizeChar(int c) => (char)(c + LowercaseAlphabetStart);
+        private static char DenormalizeChar(int c) =>
+            (char)(c + LowercaseAlphabetStart);
 
-        protected virtual string GetEncodingKeyword(string plainText) => $"{_keyword}{plainText}";
-        protected virtual string GetDecodingKeyword(string cipherText) => _keyword.ToString();
+        #region ... protected ...
+        protected virtual string GetEncodingKeyword(string plainText) =>
+            $"{_keyword}{plainText.Replace(" ", string.Empty)}";
+        protected virtual string GetDecodingKeyword(string cipherText) =>
+            _keyword.ToString(); // clone the string keyword, so it can be padded with plain text
+
+        #endregion ... protected ...
+
     }
 }

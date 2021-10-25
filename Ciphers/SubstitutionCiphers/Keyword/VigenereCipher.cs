@@ -1,10 +1,13 @@
-﻿namespace Ciphers.SubstitutionCiphers.Vigenere
+﻿namespace Ciphers.SubstitutionCiphers.Keyword
 {
     public class VigenereCipher : VigenereAutokeyCipher
     {
         private string PadKeyword(int desiredLength)
         {
-            var kw = _keyword.Length > desiredLength ? _keyword[..desiredLength] : _keyword;
+            if (_keyword.Length > desiredLength)
+                return _keyword[..desiredLength];
+
+            var kw = _keyword.ToString();
 
             var idx = 0;
             while (kw.Length < desiredLength)
