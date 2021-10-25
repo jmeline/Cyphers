@@ -14,7 +14,7 @@ namespace Ciphers.SubstitutionCiphers.Keyword
             _cipher = new VigenereCipher();
         }
 
-        /// <re>
+        /// <summary>
         /// Verifies that the alghoritm correctly encodes and decodes back a given text
         /// </summary>
         [Fact]
